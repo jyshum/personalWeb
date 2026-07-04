@@ -13,8 +13,8 @@ export default function About() {
             <Image
               src="/profile.jpg"
               alt="Jared Shum"
-              width={683}
-              height={1024}
+              width={1366}
+              height={2048}
               className="w-full max-w-[280px] border border-rule grayscale"
             />
             <p className="meta mt-3 normal-case tracking-[0.15em]">Jared Shum, Vancouver BC</p>

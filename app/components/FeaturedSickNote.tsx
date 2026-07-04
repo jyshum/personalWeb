@@ -58,7 +58,7 @@ export default function FeaturedSickNote() {
                   href="https://github.com/jyshum/SickNote"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="meta-link text-[12px]"
+                  className="meta-link"
                 >
                   Source ↗
                 </a>
@@ -70,6 +70,7 @@ export default function FeaturedSickNote() {
               href="https://www.sicknoteinc.xyz/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit SickNote — live site"
               className="block overflow-hidden border border-rule transition-colors hover:border-accent"
             >
               <Image

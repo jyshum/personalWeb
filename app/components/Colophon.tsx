@@ -36,7 +36,7 @@ export default function Colophon() {
                 {...(href.startsWith("mailto:")
                   ? {}
                   : { target: "_blank", rel: "noopener noreferrer" })}
-                className="meta-link text-[12px]"
+                className="meta-link"
               >
                 {label} ↗
               </a>
