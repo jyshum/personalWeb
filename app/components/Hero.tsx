@@ -27,7 +27,7 @@ export default function Hero() {
       <Reveal delay={0.24}>
         <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3">
           <a href="mailto:jaredshum101@gmail.com" className="meta-link">
-            Email ↗
+            Email ↗︎
           </a>
           <a
             href="https://github.com/jyshum"
@@ -35,7 +35,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="meta-link"
           >
-            GitHub ↗
+            GitHub ↗︎
           </a>
           <a
             href="https://www.linkedin.com/in/jared-shum-a9199034b/"
@@ -43,7 +43,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="meta-link"
           >
-            LinkedIn ↗
+            LinkedIn ↗︎
           </a>
         </div>
       </Reveal>

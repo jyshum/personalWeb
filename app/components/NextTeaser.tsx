@@ -27,7 +27,7 @@ export default function NextTeaser() {
                 </h2>
               </div>
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint transition-colors group-hover:text-accent">
-                victoryvelocity.ca ↗
+                victoryvelocity.ca ↗︎
               </p>
             </div>
             <p className="mt-6 text-ink/70">Something new, in production — 2026.</p>

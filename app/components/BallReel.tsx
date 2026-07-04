@@ -1,13 +1,21 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const clips = ["/ballvid1.mp4", "/ballvid2.mp4"]
 
 export default function BallReel() {
   const [clip, setClip] = useState(0)
   const [hovering, setHovering] = useState(false)
+  const [touch, setTouch] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (window.matchMedia("(hover: none)").matches) {
+      setTouch(true)
+      videoRef.current?.play()
+    }
+  }, [])
 
   return (
     <div
@@ -31,13 +39,13 @@ export default function BallReel() {
           loop
           playsInline
           preload="metadata"
-          autoPlay={hovering}
+          autoPlay={hovering || touch}
           className="absolute inset-0 h-full w-full object-cover transition-[filter] duration-500 [filter:grayscale(1)_brightness(0.85)] group-hover:[filter:sepia(0.2)_brightness(0.85)_saturate(0.85)]"
         />
         <div className="pointer-events-none absolute inset-0 bg-[#d8cfbc] mix-blend-multiply opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/60 to-transparent p-4 pt-10 transition-opacity duration-300 group-hover:opacity-0">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper">
-            Hover to play
+            {touch ? "Tap for next" : "Hover to play"}
           </span>
         </div>
       </div>
@@ -46,7 +54,7 @@ export default function BallReel() {
           Court tape — 0{clip + 1} / 02
         </p>
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint transition-colors group-hover:text-accent">
-          Click for next ↻
+          Click for next ↻︎
         </p>
       </div>
     </div>

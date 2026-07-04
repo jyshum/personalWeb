@@ -51,7 +51,7 @@ export default function FeaturedSickNote() {
                   rel="noopener noreferrer"
                   className="font-mono text-[12px] font-medium uppercase tracking-[0.2em] text-accent transition-opacity hover:opacity-70"
                 >
-                  Visit ↗
+                  Visit ↗︎
                 </a>
                 <a
                   href="https://github.com/jyshum/SickNote"
@@ -59,7 +59,7 @@ export default function FeaturedSickNote() {
                   rel="noopener noreferrer"
                   className="meta-link"
                 >
-                  Source ↗
+                  Source ↗︎
                 </a>
               </div>
             </Reveal>

@@ -24,6 +24,20 @@ export const metadata: Metadata = {
   title: "Jared Shum — ML & full-stack builder",
   description:
     "Jared Shum builds ML systems and web products. Vancouver, BC — UBC Sauder BUCS, Class of 2030.",
+  openGraph: {
+    title: "Jared Shum — ML & full-stack builder",
+    description:
+      "I love building ML systems and impactful products. Vancouver, BC — UBC Sauder BUCS, Class of 2030.",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Jared Shum — portfolio" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jared Shum — ML & full-stack builder",
+    description:
+      "I love building ML systems and impactful products. Vancouver, BC — UBC Sauder BUCS, Class of 2030.",
+    images: ["/og.png"],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

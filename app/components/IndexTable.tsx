@@ -41,7 +41,7 @@ export default function IndexTable() {
                       rel="noopener noreferrer"
                       className="font-serif text-2xl font-semibold tracking-tight transition-colors hover:text-accent"
                     >
-                      {row.title} ↗
+                      {row.title} ↗︎
                     </a>
                   ) : (
                     <p className="font-serif text-2xl font-semibold tracking-tight">{row.title}</p>
