@@ -32,8 +32,9 @@ export default function BallReel() {
           playsInline
           preload="metadata"
           autoPlay={hovering}
-          className="absolute inset-0 h-full w-full object-cover transition-[filter] duration-500 [filter:grayscale(1)_sepia(0.3)_brightness(0.85)] group-hover:[filter:sepia(0.15)_brightness(0.95)]"
+          className="absolute inset-0 h-full w-full object-cover transition-[filter] duration-500 [filter:grayscale(1)_sepia(0.3)_brightness(0.85)] group-hover:[filter:sepia(0.2)_brightness(0.85)_saturate(0.85)]"
         />
+        <div className="pointer-events-none absolute inset-0 bg-[#d8cfbc] mix-blend-multiply" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/60 to-transparent p-4 pt-10 transition-opacity duration-300 group-hover:opacity-0">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper">
             Hover to play
