@@ -30,7 +30,7 @@ export default function About() {
               ))}
             </div>
           </Reveal>
-          <div>
+          <div className="flex flex-col">
             <Reveal delay={0.08}>
               <p className="eyebrow mb-8">Off the clock</p>
               <p className="text-lg leading-relaxed text-ink/80">
@@ -50,7 +50,7 @@ export default function About() {
                 , filming and playing dinosaur games are my zen, subscribe!
               </p>
             </Reveal>
-            <Reveal delay={0.14} className="mt-12">
+            <Reveal delay={0.14} className="mt-12 flex flex-1 flex-col">
               <BallReel />
             </Reveal>
           </div>

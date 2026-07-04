@@ -11,7 +11,7 @@ export default function BallReel() {
 
   return (
     <div
-      className="group cursor-pointer select-none"
+      className="group flex h-full cursor-pointer select-none flex-col"
       onMouseEnter={() => {
         setHovering(true)
         videoRef.current?.play()
@@ -22,7 +22,7 @@ export default function BallReel() {
       }}
       onClick={() => setClip((c) => (c + 1) % clips.length)}
     >
-      <div className="relative overflow-hidden border border-rule">
+      <div className="relative aspect-square overflow-hidden border border-rule sm:aspect-auto sm:flex-1">
         <video
           key={clip}
           ref={videoRef}
@@ -32,7 +32,7 @@ export default function BallReel() {
           playsInline
           preload="metadata"
           autoPlay={hovering}
-          className="aspect-square w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+          className="absolute inset-0 h-full w-full object-cover transition-[filter] duration-500 [filter:grayscale(1)_sepia(0.3)_brightness(0.85)] group-hover:[filter:sepia(0.15)_brightness(0.95)]"
         />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/60 to-transparent p-4 pt-10 transition-opacity duration-300 group-hover:opacity-0">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper">
