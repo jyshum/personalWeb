@@ -57,9 +57,6 @@ export default function Hero() {
             priority
             className="aspect-[4/5] w-full border border-rule object-cover object-[center_30%]"
           />
-          <p className="font-mono text-[11px] tracking-[0.15em] text-faint mt-3">
-            Croatia — golden hour
-          </p>
         </Reveal>
       </div>
     </section>
