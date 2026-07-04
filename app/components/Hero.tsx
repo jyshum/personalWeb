@@ -45,14 +45,6 @@ export default function Hero() {
           >
             LinkedIn ↗
           </a>
-          <a
-            href="https://www.youtube.com/@CrocEdge"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="meta-link"
-          >
-            YouTube ↗
-          </a>
         </div>
       </Reveal>
         </div>
