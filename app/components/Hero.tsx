@@ -1,11 +1,14 @@
+import Image from "next/image"
 import Reveal from "./Reveal"
 
 export default function Hero() {
   return (
-    <section id="top" className="mx-auto max-w-5xl px-6 pb-20 pt-24 sm:pb-28 sm:pt-36">
-      <Reveal>
-        <p className="eyebrow mb-8">My DMs are open.</p>
-      </Reveal>
+    <section id="top" className="mx-auto max-w-5xl px-6 pb-20 pt-16 sm:pb-28 sm:pt-20">
+      <div className="grid items-center gap-12 lg:grid-cols-[1fr_340px] lg:gap-20">
+        <div>
+          <Reveal>
+            <p className="eyebrow mb-8">My DMs are open.</p>
+          </Reveal>
       <Reveal delay={0.08}>
         <h1 className="font-serif text-[clamp(3.5rem,12vw,8.5rem)] font-semibold leading-[0.95] tracking-tight">
           Jared
@@ -52,6 +55,21 @@ export default function Hero() {
           </a>
         </div>
       </Reveal>
+        </div>
+        <Reveal delay={0.3}>
+          <Image
+            src="/croatia-hero.jpeg"
+            alt="Jared Shum on the Adriatic coast, Croatia"
+            width={1200}
+            height={1600}
+            priority
+            className="aspect-[4/5] w-full border border-rule object-cover object-[center_30%]"
+          />
+          <p className="font-mono text-[11px] tracking-[0.15em] text-faint mt-3">
+            Croatia — golden hour
+          </p>
+        </Reveal>
+      </div>
     </section>
   )
 }

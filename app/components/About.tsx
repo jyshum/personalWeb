@@ -1,4 +1,5 @@
 import Image from "next/image"
+import BallReel from "./BallReel"
 import Reveal from "./Reveal"
 
 const ballPics = [
@@ -48,6 +49,9 @@ export default function About() {
                 </a>
                 , filming and playing dinosaur games are my zen, subscribe!
               </p>
+            </Reveal>
+            <Reveal delay={0.14} className="mt-12">
+              <BallReel />
             </Reveal>
           </div>
         </div>
