@@ -2,11 +2,6 @@ import Image from "next/image"
 import BallReel from "./BallReel"
 import Reveal from "./Reveal"
 
-const ballPics = [
-  { src: "/ballpic1.jpeg", position: "object-center" },
-  { src: "/ballpic2.jpeg", position: "object-center" },
-  { src: "/ballpic3.jpeg", position: "object-top" },
-]
 
 export default function About() {
   return (
@@ -18,16 +13,20 @@ export default function About() {
         <div className="grid gap-12 sm:grid-cols-[280px_1fr] sm:gap-16">
           <Reveal>
             <div className="flex flex-col gap-3">
-              {ballPics.map(({ src, position }) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt="Basketball"
-                  width={400}
-                  height={400}
-                  className={`aspect-square w-full max-w-[280px] border border-rule object-cover ${position} grayscale transition-all duration-500 hover:grayscale-0`}
-                />
-              ))}
+              <Image
+                src="/ballpic1.jpeg"
+                alt="Basketball"
+                width={400}
+                height={400}
+                className="aspect-square w-full max-w-[280px] border border-rule object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              />
+              <Image
+                src="/ballpic3.jpeg"
+                alt="Basketball"
+                width={839}
+                height={1287}
+                className="aspect-[2/3] w-full max-w-[280px] border border-rule object-cover object-[center_35%] grayscale transition-all duration-500 hover:grayscale-0"
+              />
             </div>
           </Reveal>
           <div className="flex flex-col">
