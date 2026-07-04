@@ -3,7 +3,7 @@ import Reveal from "./Reveal"
 const rows = [
   {
     year: "2025",
-    title: "ML startup internship",
+    title: "AI Data Internship",
     org: "Growth-stage ML startup",
     summary:
       "Data preprocessing pipelines cleaning and standardizing 3,000+ conference records to sharpen LLM-based matching, with internal documentation other teams adopted independently.",

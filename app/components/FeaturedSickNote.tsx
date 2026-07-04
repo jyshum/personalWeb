@@ -27,8 +27,7 @@ export default function FeaturedSickNote() {
               <p className="mt-8 leading-relaxed text-ink/80">
                 A screening tool that listens. SickNote turns cough recordings into mel
                 spectrograms and classifies them with an ensemble of five convolutional
-                neural networks — returning a prediction alongside a Grad-CAM heatmap
-                that shows exactly which regions of the audio drove the decision.
+                neural networks — returning a prediction alongside a Grad-CAM heatmap.
               </p>
             </Reveal>
             <Reveal delay={0.12}>

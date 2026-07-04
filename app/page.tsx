@@ -4,7 +4,6 @@ import FeaturedSickNote from "./components/FeaturedSickNote"
 import NextTeaser from "./components/NextTeaser"
 import IndexTable from "./components/IndexTable"
 import About from "./components/About"
-import Colophon from "./components/Colophon"
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
       <NextTeaser />
       <IndexTable />
       <About />
-      <Colophon />
     </main>
   )
 }

@@ -1,12 +1,7 @@
 const links = [
   { label: "Work", href: "#work", external: false },
   { label: "About", href: "#about", external: false },
-  {
-    label: "Résumé",
-    href: "https://drive.google.com/drive/folders/1IP5qzF3WJvllAlzVZyvNecpdpqAPS6w8",
-    external: true,
-  },
-  { label: "Contact", href: "#contact", external: false },
+  { label: "Contact", href: "#top", external: false },
 ]
 
 export default function Masthead() {
