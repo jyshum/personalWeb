@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 
 const clips = [
-  { src: "/ballvid1.mp4", poster: "/ballpic1.jpeg" },
-  { src: "/ballvid2.mp4", poster: "/ballpic3.jpeg" },
+  { src: "/ballvid1.mp4", poster: "/ballvid1-poster.jpg" },
+  { src: "/ballvid2.mp4", poster: "/ballvid2-poster.jpg" },
 ]
 
 export default function BallReel() {
