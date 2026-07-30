@@ -1,19 +1,12 @@
 import Image from "next/image"
 import Reveal from "./Reveal"
 
-const points = [
-  "Ensemble inference: five independently trained CNNs with averaged predictions",
-  "Grad-CAM heatmaps rendered over each mel spectrogram for explainability",
-  "Records from the microphone or accepts uploads, with tiered confidence and session history",
-  "Decoupled deployment: PyTorch + FastAPI in Docker on Railway; Next.js frontend on Vercel",
-]
-
 export default function FeaturedSickNote() {
   return (
-    <section id="work" className="border-t border-rule">
+    <section id="sicknote" className="border-t border-rule">
       <div className="mx-auto max-w-5xl px-6 py-20 sm:py-28">
         <Reveal>
-          <p className="eyebrow mb-12">01 — Featured work</p>
+          <p className="eyebrow mb-12">04 — Also built</p>
         </Reveal>
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
@@ -29,16 +22,6 @@ export default function FeaturedSickNote() {
                 spectrograms and classifies them with an ensemble of five convolutional
                 neural networks — returning a prediction alongside a Grad-CAM heatmap.
               </p>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <ul className="mt-8 space-y-3">
-                {points.map((point) => (
-                  <li key={point} className="flex gap-3 text-[15px] leading-relaxed text-ink/70">
-                    <span className="mt-[2px] shrink-0 text-accent">·</span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
             </Reveal>
             <Reveal delay={0.16}>
               <p className="meta mt-10">

@@ -1,7 +1,7 @@
 const links = [
-  { label: "Work", href: "#work", external: false },
-  { label: "About", href: "#about", external: false },
-  { label: "Contact", href: "#top", external: false },
+  { label: "Building", href: "#building" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ]
 
 export default function Masthead() {
@@ -12,13 +12,8 @@ export default function Masthead() {
           Jared Shum
         </a>
         <nav className="flex items-center gap-5 sm:gap-8">
-          {links.map(({ label, href, external }) => (
-            <a
-              key={label}
-              href={href}
-              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="meta-link"
-            >
+          {links.map(({ label, href }) => (
+            <a key={label} href={href} className="meta-link">
               {label}
             </a>
           ))}

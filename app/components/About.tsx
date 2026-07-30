@@ -8,7 +8,7 @@ export default function About() {
     <section id="about" className="border-t border-rule">
       <div className="mx-auto max-w-5xl px-6 py-20 sm:py-28">
         <Reveal>
-          <p className="eyebrow mb-12">04 — About</p>
+          <p className="eyebrow mb-12">03 — About</p>
         </Reveal>
         <div className="grid gap-12 sm:grid-cols-[280px_1fr] sm:gap-16">
           <Reveal>

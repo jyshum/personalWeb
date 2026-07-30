@@ -1,19 +1,21 @@
 import Masthead from "./components/Masthead"
 import Hero from "./components/Hero"
-import FeaturedSickNote from "./components/FeaturedSickNote"
-import NextTeaser from "./components/NextTeaser"
-import IndexTable from "./components/IndexTable"
+import Recently from "./components/Recently"
+import VictoryVelocity from "./components/VictoryVelocity"
 import About from "./components/About"
+import FeaturedSickNote from "./components/FeaturedSickNote"
+import ContactFooter from "./components/ContactFooter"
 
 export default function Home() {
   return (
     <main>
       <Masthead />
       <Hero />
-      <FeaturedSickNote />
-      <NextTeaser />
-      <IndexTable />
+      <Recently />
+      <VictoryVelocity />
       <About />
+      <FeaturedSickNote />
+      <ContactFooter />
     </main>
   )
 }
