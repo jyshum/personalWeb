@@ -36,7 +36,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   /* Absolute base so the generated OG image resolves on shared links rather
      than falling back to localhost. */
-  metadataBase: new URL("https://jaredshum.com"),
+  metadataBase: new URL("https://www.jaredshum.ca"),
   title: {
     default: "Jared Shum",
     template: "%s · Jared Shum",
