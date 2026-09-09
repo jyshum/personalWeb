@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f7f5f0;
-  --color-ink: #1a1815;
+  --color-paper: #f4e9d5;
+  --color-ink: #241c14;
   --color-accent: #c2410c;
-  --color-rule: #e5e1d8;
-  --color-faint: #8a857c;
+  --color-rule: #ecdfc9;
+  --color-faint: #8a7a63;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-tagline: var(--font-instrument), Georgia, serif;
   --font-serif: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
@@ -30,4 +32,171 @@ html {
 
 .meta-link {
   @apply font-mono text-[11px] uppercase tracking-[0.2em] text-faint transition-colors hover:text-accent;
+}
+
+/* Bone nav buttons.
+   Five cumulative SVG frames stacked in place; hover fades them in one after
+   another so the cracks spread, and out in reverse. No JS, no image requests
+   on hover — every frame ships with the page. */
+
+.bone {
+  position: relative;
+  display: block;
+  width: clamp(76px, 7vw, 92px);
+  aspect-ratio: 430 / 160;
+  transition: transform 140ms ease-out;
+}
+
+/* Barely there: a pixel of rise, a percent of growth. */
+.bone:hover,
+.bone:focus-visible {
+  transform: translateY(-1px) scale(1.012);
+  z-index: 1;
+}
+
+/* Close, but each bone clear of its neighbours. */
+.bone + .bone {
+  margin-top: 2px;
+}
+
+.bone img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bone-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-instrument), Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #5c4530;
+  pointer-events: none;
+}
+
+/* Sections that don't exist yet: visible, legible, and plainly not a link. */
+.bone-soon {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Back button: the full bone rendered at height, clipped to its left 60% so
+   only the two knobs and a stub of shaft survive. */
+.bone-back {
+  position: relative;
+  display: inline-block;
+  width: 104px;
+  aspect-ratio: 260 / 160;
+  overflow: hidden;
+  transition: transform 140ms ease-out;
+}
+
+.bone-back img {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+
+.bone-back .f2,
+.bone-back .f3,
+.bone-back .f4,
+.bone-back .f5 {
+  opacity: 0;
+  transition: opacity 110ms ease;
+}
+
+.bone-back .f5 { transition-delay: 0ms; }
+.bone-back .f4 { transition-delay: 40ms; }
+.bone-back .f3 { transition-delay: 80ms; }
+.bone-back .f2 { transition-delay: 120ms; }
+
+.bone-back:hover .f2,
+.bone-back:focus-visible .f2 { opacity: 1; transition-delay: 0ms; }
+.bone-back:hover .f3,
+.bone-back:focus-visible .f3 { opacity: 1; transition-delay: 40ms; }
+.bone-back:hover .f4,
+.bone-back:focus-visible .f4 { opacity: 1; transition-delay: 80ms; }
+.bone-back:hover .f5,
+.bone-back:focus-visible .f5 { opacity: 1; transition-delay: 120ms; }
+
+.bone-back:hover,
+.bone-back:focus-visible {
+  transform: translateY(-1px) scale(1.012);
+}
+
+.bone-back:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 6px;
+}
+
+/* Essay body. Georgia carries long prose better than the display faces. */
+.prose p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.72;
+  color: color-mix(in srgb, var(--color-ink) 88%, transparent);
+  max-width: 62ch;
+}
+
+.prose p + p {
+  margin-top: 1.25em;
+}
+
+/* Closing note: same measure, inherits the orange from its container. */
+.prose-reflection p {
+  color: inherit;
+  font-size: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bone-back,
+  .bone-back img { transition-duration: 1ms; transition-delay: 0ms; }
+  .bone-back:hover,
+  .bone-back:focus-visible { transform: none; }
+}
+
+.bone .f2,
+.bone .f3,
+.bone .f4,
+.bone .f5 {
+  opacity: 0;
+  transition: opacity 110ms ease;
+}
+
+/* Leaving: the deepest cracks heal first. */
+.bone .f5 { transition-delay: 0ms; }
+.bone .f4 { transition-delay: 40ms; }
+.bone .f3 { transition-delay: 80ms; }
+.bone .f2 { transition-delay: 120ms; }
+
+/* Arriving: they spread outward. */
+.bone:hover .f2,
+.bone:focus-visible .f2 { opacity: 1; transition-delay: 0ms; }
+.bone:hover .f3,
+.bone:focus-visible .f3 { opacity: 1; transition-delay: 40ms; }
+.bone:hover .f4,
+.bone:focus-visible .f4 { opacity: 1; transition-delay: 80ms; }
+.bone:hover .f5,
+.bone:focus-visible .f5 { opacity: 1; transition-delay: 120ms; }
+
+.bone:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bone,
+  .bone img { transition-duration: 1ms; transition-delay: 0ms; }
+  .bone:hover,
+  .bone:focus-visible { transform: none; }
 }

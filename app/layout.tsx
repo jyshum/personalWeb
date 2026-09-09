@@ -1,6 +1,17 @@
 import type { Metadata } from "next"
-import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google"
+import { Playfair_Display, Instrument_Serif, Fraunces, Inter, IBM_Plex_Mono } from "next/font/google"
 import "./globals.css"
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+})
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument",
+})
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -44,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${playfair.variable} ${instrument.variable} ${fraunces.variable} ${inter.variable} ${plexMono.variable}`}
     >
       <body className="bg-paper text-ink font-sans antialiased">{children}</body>
     </html>
