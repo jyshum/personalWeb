@@ -12,7 +12,16 @@ export default function SickNote() {
     <ProjectPage
       title="SickNote"
       titleHref="https://www.sicknoteinc.xyz/"
+      backHref="/projects"
+      backLabel="Back to projects"
       meta="Machine learning project · 3rd place, XdHacks Vancouver"
+      shot={{
+        src: "/sicknote-shot.png",
+        alt: "The SickNote web app",
+        width: 1440,
+        height: 900,
+        caption: "sicknoteinc.xyz",
+      }}
       codeHref="https://github.com/jyshum/SickNote"
       reflection={
         <>

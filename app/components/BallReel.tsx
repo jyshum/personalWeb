@@ -71,7 +71,7 @@ export default function BallReel() {
       </div>
       <div className="mt-3 flex items-center justify-between">
         <p className="font-mono text-[11px] tracking-[0.15em] text-faint">
-          Court tape — 0{clip + 1} / 02
+          Court tape 0{clip + 1} / 02
         </p>
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint transition-colors group-hover:text-accent">
           Click for next ↻︎
