@@ -5,7 +5,9 @@ import SocialLinks from "./components/SocialLinks"
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-[940px] flex-col px-[clamp(12px,4vw,32px)] pt-[10vh]">
+    /* A phone has far more vertical room than the composition needs, so the
+       block starts lower there and sits nearer the middle. */
+    <main className="mx-auto flex min-h-screen w-full max-w-[940px] flex-col px-[clamp(12px,4vw,32px)] pt-[36vh] sm:pt-[10vh]">
       {/* The fossil arrangement stops short of its own field's right edge, so
           the block's visual centre sits left of the layout centre. That gap is
           the same fraction of the row at every width, so one nudge re-centres
