@@ -94,6 +94,21 @@ body {
   outline-offset: 6px;
 }
 
+/* Centres "Back" over the clipped bone. Scoped to .bone-back so it cannot be
+   orphaned again the way it was when the bone column was removed. */
+.bone-back .bone-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-krona-one), system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5c4530;
+  pointer-events: none;
+}
+
 /* Essay body. Georgia carries long prose better than the display faces. */
 .prose p {
   font-family: Georgia, "Times New Roman", serif;

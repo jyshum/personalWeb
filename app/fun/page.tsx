@@ -4,9 +4,9 @@ import BackBone from "../components/BackBone"
 import BallReel from "../components/BallReel"
 
 export const metadata: Metadata = {
-  title: "Fun — Jared Shum",
+  title: "Fun",
   description:
-    "Basketball, a 40 inch vertical, and a YouTube channel about dinosaur games.",
+    "Basketball, a vertical jump grind, and a YouTube channel about dinosaur games.",
 }
 
 const ORANGE = "text-[#a85a2c]"

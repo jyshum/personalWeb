@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ProjectPage from "../components/ProjectPage"
 
 export const metadata: Metadata = {
-  title: "Internships — Jared Shum",
+  title: "Internships",
   description: "Data engineering intern at Graze AI in San Francisco, January to March 2026.",
 }
 

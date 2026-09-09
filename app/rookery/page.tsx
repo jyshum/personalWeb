@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ProjectPage from "../components/ProjectPage"
 
 export const metadata: Metadata = {
-  title: "Rookery — Jared Shum",
+  title: "Rookery",
   description:
     "An annotation tool built on a four layer Canvas2D renderer, with command pattern undo and RLE mask export.",
 }

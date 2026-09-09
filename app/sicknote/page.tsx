@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ProjectPage from "../components/ProjectPage"
 
 export const metadata: Metadata = {
-  title: "SickNote — Jared Shum",
+  title: "SickNote",
   description:
     "A binary cough classifier: a 3-model CNN ensemble trained on 2,267 expert-labeled clips, served via FastAPI.",
 }

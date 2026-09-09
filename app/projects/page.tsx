@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import BackBone from "../components/BackBone"
 
 export const metadata: Metadata = {
-  title: "Projects — Jared Shum",
+  title: "Projects",
   description: "SickNote, a cough classifier, and Rookery, an annotation tool.",
 }
 

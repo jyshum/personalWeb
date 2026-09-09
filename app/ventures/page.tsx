@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ProjectPage from "../components/ProjectPage"
 
 export const metadata: Metadata = {
-  title: "Ventures — Jared Shum",
+  title: "Ventures",
   description: "Victory Velocity, a GEO and SEO venture Jared co-founded.",
 }
 

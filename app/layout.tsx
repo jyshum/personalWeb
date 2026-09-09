@@ -1,12 +1,5 @@
 import type { Metadata } from "next"
-import {
-  Playfair_Display,
-  Instrument_Serif,
-  Krona_One,
-  Fraunces,
-  Inter,
-  IBM_Plex_Mono,
-} from "next/font/google"
+import { Playfair_Display, Instrument_Serif, Krona_One, Inter, IBM_Plex_Mono } from "next/font/google"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -26,13 +19,6 @@ const krona = Krona_One({
   variable: "--font-krona-one",
 })
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-fraunces",
-})
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -44,23 +30,27 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 })
 
+const DESCRIPTION =
+  "Exploring the world through people and tech. Ventures, projects, internships and teaching, from Vancouver."
+
 export const metadata: Metadata = {
-  title: "Jared Shum — ML & full-stack builder",
-  description:
-    "Jared Shum builds ML systems and web products. Vancouver, BC — UBC Sauder BUCS, Class of 2030.",
+  /* Absolute base so the generated OG image resolves on shared links rather
+     than falling back to localhost. */
+  metadataBase: new URL("https://jaredshum.com"),
+  title: {
+    default: "Jared Shum",
+    template: "%s · Jared Shum",
+  },
+  description: DESCRIPTION,
   openGraph: {
-    title: "Jared Shum — ML & full-stack builder",
-    description:
-      "I love building ML systems and impactful products. Vancouver, BC — UBC Sauder BUCS, Class of 2030.",
+    title: "Jared Shum",
+    description: DESCRIPTION,
     type: "website",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Jared Shum — portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jared Shum — ML & full-stack builder",
-    description:
-      "I love building ML systems and impactful products. Vancouver, BC — UBC Sauder BUCS, Class of 2030.",
-    images: ["/og.png"],
+    title: "Jared Shum",
+    description: DESCRIPTION,
   },
 }
 
@@ -68,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${instrument.variable} ${krona.variable} ${fraunces.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${playfair.variable} ${instrument.variable} ${krona.variable} ${inter.variable} ${plexMono.variable}`}
     >
       <body className="bg-paper text-ink font-sans antialiased">{children}</body>
     </html>
