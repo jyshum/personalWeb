@@ -8,6 +8,7 @@
   --color-faint: #8a7a63;
   --font-display: var(--font-playfair), Georgia, serif;
   --font-tagline: var(--font-instrument), Georgia, serif;
+  --font-krona: var(--font-krona-one), system-ui, sans-serif;
   --font-serif: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
@@ -15,6 +16,13 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* The fossil field's box extends past its last piece, and the centring nudge
+   pushes that empty tail off-screen on a phone. Nothing visible is clipped;
+   this only stops the dead space raising a scrollbar. */
+body {
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -32,58 +40,6 @@ html {
 
 .meta-link {
   @apply font-mono text-[11px] uppercase tracking-[0.2em] text-faint transition-colors hover:text-accent;
-}
-
-/* Bone nav buttons.
-   Five cumulative SVG frames stacked in place; hover fades them in one after
-   another so the cracks spread, and out in reverse. No JS, no image requests
-   on hover — every frame ships with the page. */
-
-.bone {
-  position: relative;
-  display: block;
-  width: clamp(76px, 7vw, 92px);
-  aspect-ratio: 430 / 160;
-  transition: transform 140ms ease-out;
-}
-
-/* Barely there: a pixel of rise, a percent of growth. */
-.bone:hover,
-.bone:focus-visible {
-  transform: translateY(-1px) scale(1.012);
-  z-index: 1;
-}
-
-/* Close, but each bone clear of its neighbours. */
-.bone + .bone {
-  margin-top: 2px;
-}
-
-.bone img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.bone-label {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-instrument), Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: #5c4530;
-  pointer-events: none;
-}
-
-/* Sections that don't exist yet: visible, legible, and plainly not a link. */
-.bone-soon {
-  opacity: 0.55;
-  cursor: default;
 }
 
 /* Back button: the full bone rendered at height, clipped to its left 60% so
@@ -141,20 +97,204 @@ html {
 /* Essay body. Georgia carries long prose better than the display faces. */
 .prose p {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  line-height: 1.72;
+  font-size: 15px;
+  line-height: 1.62;
   color: color-mix(in srgb, var(--color-ink) 88%, transparent);
-  max-width: 62ch;
+  max-width: 64ch;
 }
 
 .prose p + p {
-  margin-top: 1.25em;
+  margin-top: 1.1em;
 }
 
 /* Closing note: same measure, inherits the orange from its container. */
 .prose-reflection p {
   color: inherit;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+/* Scattered fossil navigation. Pieces sit in percentages inside a fixed-ratio
+   field, so the arrangement scales as one composition instead of reflowing. */
+
+.fossil-field {
+  position: relative;
+  width: 100%;
+}
+
+.fossil {
+  position: absolute;
+  display: block;
+}
+
+.fossil:hover,
+.fossil:focus-visible {
+  z-index: 2;
+}
+
+/* Only the artwork moves. Hovering knocks it — a short jolt that returns to
+   exactly where it started, while the cracks spread. */
+.fossil-art,
+.fossil-cracks {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-repeat: no-repeat;
+  transform: rotate(var(--rot));
+  transform-origin: 50% 50%;
+}
+
+.fossil:hover .fossil-art,
+.fossil:focus-visible .fossil-art,
+.fossil:hover .fossil-cracks,
+.fossil:focus-visible .fossil-cracks {
+  animation: fossil-jolt 280ms ease-out;
+}
+
+@keyframes fossil-jolt {
+  0%   { transform: rotate(var(--rot)) translate(0, 0); }
+  22%  { transform: rotate(calc(var(--rot) + 1.6deg)) translate(-1.5px, -1.5px); }
+  52%  { transform: rotate(calc(var(--rot) - 1.1deg)) translate(1px, 0.5px); }
+  78%  { transform: rotate(calc(var(--rot) + 0.4deg)) translate(-0.4px, 0); }
+  100% { transform: rotate(var(--rot)) translate(0, 0); }
+}
+
+.fossil-cracks svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.ck {
+  fill: none;
+  stroke: #7a5c3d;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+
+/* Cracks arrive in sequence as the jolt dies down. */
+.fossil:hover .ck1,
+.fossil:focus-visible .ck1 { animation: crack-in 1ms 40ms forwards; }
+.fossil:hover .ck2,
+.fossil:focus-visible .ck2 { animation: crack-in 1ms 110ms forwards; }
+.fossil:hover .ck3,
+.fossil:focus-visible .ck3 { animation: crack-in 1ms 180ms forwards; }
+
+@keyframes crack-in {
+  to { opacity: 1; }
+}
+
+/* The label is outside the transform entirely, so it never tilts or drifts —
+   a label that dances with its piece is unreadable at exactly the moment
+   someone is trying to read it. */
+.fossil-label {
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--font-krona-one), system-ui, sans-serif;
+  /* Scales with the viewport so the labels shrink alongside the fossils
+     rather than staying fixed and swamping them on a phone. */
+  font-size: clamp(7px, 1.28vw, 12px);
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--color-ink) 88%, transparent);
+  transition: color 160ms ease;
+  pointer-events: none;
+}
+
+.fossil:hover .fossil-label,
+.fossil:focus-visible .fossil-label {
+  color: #a85a2c;
+}
+
+.fossil-tag-right .fossil-label {
+  left: 100%;
+  top: 50%;
+  margin-left: 16px;
+  translate: 0 -50%;
+}
+
+.fossil-tag-left .fossil-label {
+  right: 100%;
+  top: 50%;
+  margin-right: 16px;
+  translate: 0 -50%;
+}
+
+.fossil-tag-below .fossil-label {
+  left: 50%;
+  top: 100%;
+  margin-top: 12px;
+  translate: -50% 0;
+}
+
+.fossil:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 8px;
+}
+
+/* Brand marks scale with the viewport too. Height only — the Gmail mark is
+   4:3, so constraining width would squash it. */
+.social-icons svg {
+  height: clamp(11px, 2.3vw, 22px);
+  width: auto;
+}
+
+/* Change dinosaur: a quiet text button, and the note that floats off it. */
+.dino-button {
+  font-size: clamp(8px, 1.6vw, 11px);
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  background: none;
+  border: 0;
+  padding: 4px 2px;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.dino-button:hover,
+.dino-button:focus-visible {
+  color: #a85a2c;
+}
+
+.dino-pop {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  translate: -50% 0;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  font-size: clamp(8px, 1.6vw, 11px);
+  letter-spacing: 0.04em;
+  color: #a85a2c;
+  pointer-events: none;
+  animation: dino-float 1900ms ease-out forwards;
+}
+
+/* translate handles the centring, transform handles the drift, so the two
+   never fight each other. */
+@keyframes dino-float {
+  0%   { opacity: 0; transform: translateY(6px); }
+  16%  { opacity: 1; transform: translateY(0); }
+  68%  { opacity: 1; transform: translateY(-7px); }
+  100% { opacity: 0; transform: translateY(-18px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dino-pop { animation: dino-fade 1900ms ease-out forwards; }
+  @keyframes dino-fade {
+    0%, 80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fossil:hover .fossil-art,
+  .fossil:focus-visible .fossil-art,
+  .fossil:hover .fossil-cracks,
+  .fossil:focus-visible .fossil-cracks { animation: none; }
+  .fossil:hover .ck,
+  .fossil:focus-visible .ck { animation: crack-in 1ms forwards; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -162,41 +302,4 @@ html {
   .bone-back img { transition-duration: 1ms; transition-delay: 0ms; }
   .bone-back:hover,
   .bone-back:focus-visible { transform: none; }
-}
-
-.bone .f2,
-.bone .f3,
-.bone .f4,
-.bone .f5 {
-  opacity: 0;
-  transition: opacity 110ms ease;
-}
-
-/* Leaving: the deepest cracks heal first. */
-.bone .f5 { transition-delay: 0ms; }
-.bone .f4 { transition-delay: 40ms; }
-.bone .f3 { transition-delay: 80ms; }
-.bone .f2 { transition-delay: 120ms; }
-
-/* Arriving: they spread outward. */
-.bone:hover .f2,
-.bone:focus-visible .f2 { opacity: 1; transition-delay: 0ms; }
-.bone:hover .f3,
-.bone:focus-visible .f3 { opacity: 1; transition-delay: 40ms; }
-.bone:hover .f4,
-.bone:focus-visible .f4 { opacity: 1; transition-delay: 80ms; }
-.bone:hover .f5,
-.bone:focus-visible .f5 { opacity: 1; transition-delay: 120ms; }
-
-.bone:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 6px;
-  border-radius: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bone,
-  .bone img { transition-duration: 1ms; transition-delay: 0ms; }
-  .bone:hover,
-  .bone:focus-visible { transform: none; }
 }

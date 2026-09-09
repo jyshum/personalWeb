@@ -57,7 +57,7 @@ const LINKS: Link[] = [
 
 export default function SocialLinks() {
   return (
-    <ul className="flex items-center gap-[18px]">
+    <ul className="social-icons flex items-center gap-[clamp(7px,1.7vw,18px)]">
       {LINKS.map(({ label, href, viewBox, width, height, paths }) => (
         <li key={label}>
           <a

@@ -1,98 +1,85 @@
 import Image from "next/image"
-import BoneButton from "./components/BoneButton"
+import ChangeDinosaur from "./components/ChangeDinosaur"
+import FossilNav from "./components/FossilNav"
 import SocialLinks from "./components/SocialLinks"
-
-/* Labels are kept short on purpose: the bone gives ~74px of readable width,
-   so "Victory Velocity" overflows and "VV" does not. Entries without an href
-   render inert. */
-const BONES = [
-  { id: "vv", label: "VV", href: "#" },
-  { id: "rookery", label: "Rookery", href: "#" },
-  { id: "sicknote", label: "SickNote", href: "/sicknote" },
-  { id: "graze", label: "Graze", href: "#" },
-  { id: "teaching", label: "Teaching", href: "#" },
-  { id: "fun", label: "Fun!", href: "#" },
-  { id: "soon-1", label: "Soon" },
-  { id: "soon-2", label: "Soon" },
-]
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center px-4 pt-[15vh] sm:px-6">
-      {/* Full width on a phone so nothing can overflow; on wider screens the
-          name row sets the block width and everything shares its left edge. */}
-      <div className="w-full sm:w-fit">
+    <main className="mx-auto flex min-h-screen w-full max-w-[940px] flex-col px-[clamp(12px,4vw,32px)] pt-[10vh]">
+      {/* The fossil arrangement stops short of its own field's right edge, so
+          the block's visual centre sits left of the layout centre. That gap is
+          the same fraction of the row at every width, so one nudge re-centres
+          the whole composition on phone, laptop and monitor alike. Header moves
+          with it, keeping the name aligned to the photo's left edge. */}
+      <div className="translate-x-[6%]">
         {/* Sized so the pair stays on one line at 320px and up — nowrap, since
             wrapping is the thing that breaks the composition. */}
-        <div className="flex flex-nowrap items-baseline gap-x-4 whitespace-nowrap">
-          <h1 className="font-display text-[clamp(1.35rem,6.6vw,3rem)] font-normal tracking-tight">
-            Jared Shum
-          </h1>
-          <p className="font-tagline text-[clamp(10px,2.85vw,15px)] tracking-[0.04em] text-ink/75">
-            Exploring the world through people &amp; tech
+        <div className="flex flex-nowrap items-baseline gap-x-[clamp(8px,2.5vw,16px)] whitespace-nowrap">
+        <h1 className="font-display text-[clamp(1.2rem,6vw,3rem)] font-normal tracking-tight">
+          Jared Shum
+        </h1>
+        {/* Krona is a wide face, so this needs a smaller vw factor than a serif
+            would to keep the pair on one line at 393px. */}
+        <p className="font-krona text-[clamp(6.5px,1.95vw,12px)] tracking-[0.02em] text-ink/75">
+          Exploring the world through people &amp; tech.
+        </p>
+      </div>
+
+      {/* Never stacks. Every part is sized in percentages or clamps so a phone
+          gets the same composition at a smaller scale, not a different one. */}
+      <div className="mt-[clamp(24px,5vw,48px)] flex items-stretch gap-x-[clamp(8px,2.4vw,36px)]">
+        <div className="relative w-[30%] max-w-[270px] shrink-0">
+          <div
+            className="absolute inset-0 translate-x-[clamp(3px,0.9vw,8px)] translate-y-[clamp(3px,0.9vw,8px)] bg-[#bd7040]"
+            aria-hidden="true"
+          />
+          <Image
+            src="/croatia-hero.jpeg"
+            alt="Jared Shum"
+            fill
+            priority
+            sizes="(max-width: 768px) 34vw, 270px"
+            className="object-cover object-[50%_70%]"
+          />
+
+          <div className="absolute left-0 top-full mt-[clamp(10px,2.4vw,28px)] flex items-center gap-x-[clamp(6px,1.6vw,16px)] whitespace-nowrap">
+            <SocialLinks />
+            <p className="font-krona text-[clamp(6px,1.5vw,10px)] tracking-[0.02em] text-ink/70">
+              Always happy to chat!
+            </p>
+          </div>
+        </div>
+
+        {/* Sits level with the middle of the photo, pointing at the dig. */}
+        <div className="flex shrink-0 flex-col items-center justify-center gap-1.5 self-center">
+          <p className="font-krona text-[clamp(5px,1.3vw,9px)] tracking-[0.02em] text-[#a85a2c]">
+            Who am I?
           </p>
+          <svg
+            viewBox="0 0 32 10"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-auto w-[clamp(16px,4vw,32px)] text-[#a85a2c]"
+            aria-hidden="true"
+          >
+            <path d="M1 5h29" />
+            <path d="M24.5 1 30 5l-5.5 4" />
+          </svg>
         </div>
 
-        {/* items-stretch pins the photo to the bone column's exact height, and
-            object-cover trims to get there. object-position biases that trim
-            toward the sky so the foreground survives. */}
-        {/* The photo is flex-1 rather than a fixed width: it absorbs whatever
-            the bones and the label leave, so the row fits any screen without
-            stacking. The gap is what shrinks on a phone, not the arrangement. */}
-        <div className="mt-10 flex w-full items-stretch gap-x-5 sm:gap-x-9">
-          <div className="relative min-w-0 flex-1">
-            {/* Offset slab reading as a hard shadow. Pokes out bottom-right
-                only, so the left rule stays clean. */}
-            <div
-              className="absolute inset-0 translate-x-[8px] translate-y-[8px] bg-[#bd7040]"
-              aria-hidden="true"
-            />
-            <div className="relative h-full w-full">
-              <Image
-                src="/croatia-hero.jpeg"
-                alt="Jared Shum"
-                fill
-                priority
-                sizes="(max-width: 640px) 60vw, 270px"
-                className="object-cover object-[50%_70%]"
-              />
-            </div>
-
-            {/* Absolute so the icons hang below the block without shortening
-                the photo — the box keeps its full bone-column height. */}
-            <div className="absolute left-0 top-full mt-8 flex items-center gap-x-4 whitespace-nowrap">
-              <SocialLinks />
-              <p className="font-tagline text-[13px] tracking-[0.03em] text-ink/70">
-                Always happy to chat!
-              </p>
-            </div>
+          <div className="min-w-0 flex-1">
+            <FossilNav />
           </div>
-
-          <div className="flex shrink-0 flex-col items-center justify-center gap-2">
-            <p className="font-tagline text-[12px] tracking-[0.03em] text-[#a85a2c]">Who am I?</p>
-            <svg
-              width="32"
-              height="10"
-              viewBox="0 0 32 10"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-[#a85a2c]"
-              aria-hidden="true"
-            >
-              <path d="M1 5h29" />
-              <path d="M24.5 1 30 5l-5.5 4" />
-            </svg>
-          </div>
-
-          <nav className="flex shrink-0 flex-col items-center" aria-label="Sections">
-            {BONES.map(({ id, label, href }) => (
-              <BoneButton key={id} label={label} href={href} />
-            ))}
-          </nav>
         </div>
+      </div>
+
+      {/* Outside the centring nudge on purpose: this one sits on the page's own
+          centre line, apart from the composition. */}
+      <div className="mt-auto pt-16 pb-[7vh]">
+        <ChangeDinosaur />
       </div>
     </main>
   )
