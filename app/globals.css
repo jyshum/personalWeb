@@ -30,6 +30,45 @@ body {
   color: #f7f5f0;
 }
 
+/* Load-in. Everything arrives on the same short fade and rise, staggered by
+   --rise, so the page assembles in one direction instead of popping. Fill mode
+   `both` holds it hidden through its delay, otherwise each element would flash
+   at full opacity before its turn. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise-in 560ms cubic-bezier(0.22, 0.75, 0.3, 1) both;
+  animation-delay: var(--rise, 0ms);
+}
+
+/* The dig uncovers piece by piece. */
+.fossil {
+  animation: rise-in 560ms cubic-bezier(0.22, 0.75, 0.3, 1) both;
+}
+
+.fossil:nth-child(1) { animation-delay: 210ms; }
+.fossil:nth-child(2) { animation-delay: 290ms; }
+.fossil:nth-child(3) { animation-delay: 370ms; }
+.fossil:nth-child(4) { animation-delay: 450ms; }
+.fossil:nth-child(5) { animation-delay: 530ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .fossil {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .eyebrow {
   @apply font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-accent;
 }

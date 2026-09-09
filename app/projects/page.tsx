@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import type { CSSProperties } from "react"
 import BackBone from "../components/BackBone"
 
 export const metadata: Metadata = {
@@ -28,16 +29,22 @@ const PROJECTS = [
 export default function Projects() {
   return (
     <main className="mx-auto min-h-screen w-full max-w-[680px] px-4 pt-[8vh] pb-24 sm:px-6">
-      <BackBone />
+      <div className="rise">
+        <BackBone />
+      </div>
 
-      <h1 className="font-display mt-10 text-[clamp(2rem,7vw,3.25rem)] font-normal tracking-tight">
+      <h1 className="rise font-display mt-10 text-[clamp(2rem,7vw,3.25rem)] font-normal tracking-tight">
         Projects
       </h1>
-      <p className={`font-krona mt-4 text-[11px] tracking-[0.02em] ${ORANGE}`}>Things I built</p>
+      <p className={`rise font-krona mt-4 text-[11px] tracking-[0.02em] ${ORANGE}`}>Things I built</p>
 
       <ul className="mt-12">
-        {PROJECTS.map(({ href, title, meta, blurb }) => (
-          <li key={href} className="border-t border-rule py-9 last:border-b">
+        {PROJECTS.map(({ href, title, meta, blurb }, i) => (
+          <li
+            key={href}
+            className="rise border-t border-rule py-9 last:border-b"
+            style={{ "--rise": `${140 + i * 90}ms` } as CSSProperties}
+          >
             <a href={href} className="group block">
               <h2 className="font-display text-[28px] font-normal tracking-tight transition-colors group-hover:text-[#a85a2c]">
                 {title}

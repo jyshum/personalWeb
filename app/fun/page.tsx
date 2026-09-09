@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import type { CSSProperties } from "react"
 import Image from "next/image"
 import BackBone from "../components/BackBone"
 import BallReel from "../components/BallReel"
@@ -14,15 +15,22 @@ const ORANGE = "text-[#a85a2c]"
 export default function Fun() {
   return (
     <main className="mx-auto min-h-screen w-full max-w-[940px] px-4 pt-[8vh] pb-24 sm:px-8">
-      <BackBone />
+      <div className="rise">
+        <BackBone />
+      </div>
 
-      <h1 className="font-display mt-10 text-[clamp(2rem,7vw,3.25rem)] font-normal tracking-tight">
+      <h1 className="rise font-display mt-10 text-[clamp(2rem,7vw,3.25rem)] font-normal tracking-tight">
         Fun!
       </h1>
-      <p className={`font-krona mt-4 text-[11px] tracking-[0.02em] ${ORANGE}`}>Off the clock</p>
+      <p
+        className={`rise font-krona mt-4 text-[11px] tracking-[0.02em] ${ORANGE}`}
+        style={{ "--rise": "120ms" } as CSSProperties}
+      >
+        Off the clock
+      </p>
 
       <div className="mt-12 grid gap-12 sm:grid-cols-[280px_1fr] sm:gap-14">
-        <div className="flex flex-col gap-3">
+        <div className="rise flex flex-col gap-3" style={{ "--rise": "190ms" } as CSSProperties}>
           <Image
             src="/ballpic1.jpeg"
             alt="Playing basketball"
@@ -39,7 +47,7 @@ export default function Fun() {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="rise flex flex-col" style={{ "--rise": "260ms" } as CSSProperties}>
           {/* Jared's own copy from the previous build, semicolons in place of
               the original em dashes. */}
           <div className="prose">

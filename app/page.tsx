@@ -14,7 +14,7 @@ export default function Home() {
       <div className="translate-x-[6%]">
         {/* Sized so the pair stays on one line at 320px and up — nowrap, since
             wrapping is the thing that breaks the composition. */}
-        <div className="flex flex-nowrap items-baseline gap-x-[clamp(8px,2.5vw,16px)] whitespace-nowrap">
+        <div className="rise flex flex-nowrap items-baseline gap-x-[clamp(8px,2.5vw,16px)] whitespace-nowrap">
         <h1 className="font-display text-[clamp(1.2rem,6vw,3rem)] font-normal tracking-tight">
           Jared Shum
         </h1>
@@ -28,7 +28,7 @@ export default function Home() {
       {/* Never stacks. Every part is sized in percentages or clamps so a phone
           gets the same composition at a smaller scale, not a different one. */}
       <div className="mt-[clamp(24px,5vw,48px)] flex items-stretch gap-x-[clamp(8px,2.4vw,36px)]">
-        <div className="relative w-[30%] max-w-[270px] shrink-0">
+        <div className="rise relative w-[30%] max-w-[270px] shrink-0" style={{ "--rise": "90ms" } as React.CSSProperties}>
           <div
             className="absolute inset-0 translate-x-[clamp(3px,0.9vw,8px)] translate-y-[clamp(3px,0.9vw,8px)] bg-[#bd7040]"
             aria-hidden="true"
@@ -42,7 +42,7 @@ export default function Home() {
             className="object-cover object-[50%_70%]"
           />
 
-          <div className="absolute left-0 top-full mt-[clamp(10px,2.4vw,28px)] flex items-center gap-x-[clamp(6px,1.6vw,16px)] whitespace-nowrap">
+          <div className="rise absolute left-0 top-full mt-[clamp(10px,2.4vw,28px)] flex items-center gap-x-[clamp(6px,1.6vw,16px)] whitespace-nowrap" style={{ "--rise": "620ms" } as React.CSSProperties}>
             <SocialLinks />
             <p className="font-krona text-[clamp(6px,1.5vw,10px)] tracking-[0.02em] text-ink/70">
               Always happy to chat!
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
 
         {/* Sits level with the middle of the photo, pointing at the dig. */}
-        <div className="flex shrink-0 flex-col items-center justify-center gap-1.5 self-center">
+        <div className="rise flex shrink-0 flex-col items-center justify-center gap-1.5 self-center" style={{ "--rise": "170ms" } as React.CSSProperties}>
           <p className="font-krona text-[clamp(5px,1.3vw,9px)] tracking-[0.02em] text-[#a85a2c]">
             Who am I?
           </p>
@@ -78,7 +78,7 @@ export default function Home() {
 
       {/* Outside the centring nudge on purpose: this one sits on the page's own
           centre line, apart from the composition. */}
-      <div className="mt-auto pt-16 pb-[7vh]">
+      <div className="rise mt-auto pt-16 pb-[7vh]" style={{ "--rise": "760ms" } as React.CSSProperties}>
         <ChangeDinosaur />
       </div>
     </main>

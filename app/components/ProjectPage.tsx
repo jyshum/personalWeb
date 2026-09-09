@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import type { CSSProperties, ReactNode } from "react"
 import Image from "next/image"
 import BackBone from "./BackBone"
 
@@ -69,14 +69,16 @@ export default function ProjectPage({
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-[680px] px-4 pt-[8vh] pb-24 sm:px-6">
-      <BackBone href={backHref} label={backLabel} />
+      <div className="rise">
+        <BackBone href={backHref} label={backLabel} />
+      </div>
 
       {/* leading-none on the title trims the half-leading above the caps, so
           items-center actually centres the mark against the letters rather
           than against an oversized line box. */}
       {/* items-baseline sits the Codebase link on the title's own baseline
           rather than centring it against the title's full height. */}
-      <div className="mt-10 flex flex-wrap items-baseline gap-x-3.5 gap-y-2">
+      <div className="rise mt-10 flex flex-wrap items-baseline gap-x-3.5 gap-y-2" style={{ "--rise": "80ms" } as CSSProperties}>
         {heading}
         {codeHref && (
           <a
@@ -93,12 +95,19 @@ export default function ProjectPage({
         )}
       </div>
 
-      <p className={`font-tagline mt-3 text-[13.5px] tracking-[0.04em] ${ORANGE}`}>{meta}</p>
+      <p
+        className={`rise font-tagline mt-3 text-[13.5px] tracking-[0.04em] ${ORANGE}`}
+        style={{ "--rise": "140ms" } as CSSProperties}
+      >
+        {meta}
+      </p>
 
-      <div className="prose mt-8">{children}</div>
+      <div className="rise prose mt-8" style={{ "--rise": "200ms" } as CSSProperties}>
+        {children}
+      </div>
 
       {shot && (
-        <figure className="mt-10">
+        <figure className="rise mt-10" style={{ "--rise": "280ms" } as CSSProperties}>
           <Image
             src={shot.src}
             alt={shot.alt}
@@ -115,7 +124,12 @@ export default function ProjectPage({
       )}
 
       {reflection && (
-        <div className={`prose prose-reflection mt-14 ${ORANGE}`}>{reflection}</div>
+        <div
+          className={`rise prose prose-reflection mt-14 ${ORANGE}`}
+          style={{ "--rise": "340ms" } as CSSProperties}
+        >
+          {reflection}
+        </div>
       )}
     </main>
   )
