@@ -14,6 +14,7 @@ export default function Teaching() {
       titleHref="https://utgacademy.com/"
       logo={{ src: "/logos-utg.png", alt: "UTG Academy" }}
       meta="Instructing and leading · 2023 to 2025"
+      reflection={<p>These were my roots.</p>}
     >
       <p>
         I taught Python and Java at UTG Academy from 2024 to 2025. Lesson plans covered object
