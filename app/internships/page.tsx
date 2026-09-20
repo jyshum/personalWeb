@@ -24,19 +24,19 @@ export default function Internships() {
     >
       <p>
         Graze&apos;s mission is to help their clients find and connect with their ideal customers
-        at conferences and their value proposition is Entity Resolution (
+        at conferences and their value proposition is{" "}
         <a
           href="https://www.elastic.co/search-labs/blog/entity-resolution-llm-elasticsearch"
           target="_blank"
           rel="noopener noreferrer"
-          className={`${ORANGE} underline decoration-[#a85a2c]/35 underline-offset-4 transition-colors hover:decoration-[#a85a2c]`}
+          className={`${ORANGE} font-bold underline decoration-[#a85a2c]/35 underline-offset-4 transition-colors hover:decoration-[#a85a2c]`}
         >
-          record linkage
+          Entity Resolution
           <span className="ml-0.5 align-middle text-[0.75em]" aria-hidden="true">
             ↗
           </span>
         </a>
-        ).
+        .
       </p>
       <p>
         I was in the team working on the upstream pipeline that made this possible: a crawler to
