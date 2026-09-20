@@ -3,8 +3,10 @@ import ProjectPage from "../components/ProjectPage"
 
 export const metadata: Metadata = {
   title: "Internships",
-  description: "Data engineering intern at Graze AI in San Francisco, January to March 2026.",
+  description: "Software engineer at Graze AI in San Francisco, January to March 2026.",
 }
+
+const ORANGE = "text-[#a85a2c]"
 
 export default function Internships() {
   return (
@@ -12,21 +14,34 @@ export default function Internships() {
       title="Graze AI"
       titleHref="https://graze.ai/"
       logo={{ src: "/logos-graze.png", alt: "Graze AI" }}
-      meta="Data engineering intern · San Francisco · Jan to Mar 2026"
+      meta="Software Engineer · San Francisco · Jan to Mar 2026"
+      reflection={
+        <p>
+          First internship was an eye-opener, especially since I was working when I was still in
+          High School.
+        </p>
+      }
     >
       <p>
-        I preprocessed over 3,000 strings for an LLM pipeline, handling deduplication and
-        normalization so the model downstream was not learning from noise.
+        Graze&apos;s mission is to help their clients find and connect with their ideal customers
+        at conferences and their value proposition is Entity Resolution (
+        <a
+          href="https://www.elastic.co/search-labs/blog/entity-resolution-llm-elasticsearch"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${ORANGE} underline decoration-[#a85a2c]/35 underline-offset-4 transition-colors hover:decoration-[#a85a2c]`}
+        >
+          record linkage
+          <span className="ml-0.5 align-middle text-[0.75em]" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+        ).
       </p>
       <p>
-        The main build was a conference to company matching pipeline. It used LLM calls to work out
-        which events were actually worth a given client&apos;s time, alongside an extraction script
-        that parsed conference and company websites into structured JSON.
-      </p>
-      <p>
-        I also wrote the internal documentation for it, which is the part I am most pleased with.
-        Non technical teammates could run the data workflows themselves afterwards without coming
-        to me.
+        I was in the team working on the upstream pipeline that made this possible: a crawler to
+        keep compiling new data, and a rule-based system to clean and resolve it, feeding into the
+        models that matched companies to conferences.
       </p>
     </ProjectPage>
   )
