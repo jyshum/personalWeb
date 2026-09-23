@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react"
 import Image from "next/image"
+import ArrowOut from "./ArrowOut"
 import BackBone from "./BackBone"
 
 type Props = {
@@ -57,9 +58,7 @@ export default function ProjectPage({
           className="transition-colors hover:text-[#a85a2c]"
         >
           {title}
-          <span className="ml-2 align-middle text-[0.4em] tracking-normal" aria-hidden="true">
-            ↗
-          </span>
+          <ArrowOut className="ml-2 h-[0.3em] w-[0.3em]" />
         </a>
       ) : (
         title
@@ -88,9 +87,7 @@ export default function ProjectPage({
             className={`font-krona ml-1 text-[10px] tracking-[0.02em] ${ORANGE} underline decoration-[#a85a2c]/35 underline-offset-4 transition-colors hover:decoration-[#a85a2c]`}
           >
             Codebase
-            <span className="ml-1" aria-hidden="true">
-              ↗
-            </span>
+            <ArrowOut className="ml-1 h-[0.85em] w-[0.85em]" />
           </a>
         )}
       </div>

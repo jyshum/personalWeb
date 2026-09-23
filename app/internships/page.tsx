@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import ArrowOut from "../components/ArrowOut"
 import ProjectPage from "../components/ProjectPage"
 
 export const metadata: Metadata = {
@@ -32,9 +33,7 @@ export default function Internships() {
           className={`${ORANGE} font-bold underline decoration-[#a85a2c]/35 underline-offset-4 transition-colors hover:decoration-[#a85a2c]`}
         >
           Entity Resolution
-          <span className="ml-0.5 align-middle text-[0.75em]" aria-hidden="true">
-            ↗
-          </span>
+          <ArrowOut className="ml-0.5 h-[0.72em] w-[0.72em]" />
         </a>
         .
       </p>
